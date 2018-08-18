@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="16" tileheight="16" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="world_tiles" width="8" height="8">
+  <data encoding="csv">
+930,931,932,609,609,658,609,658,
+968,964,965,647,647,647,647,805,
+647,647,647,647,647,647,647,647,
+647,647,647,647,647,647,647,647,
+647,647,647,770,647,647,647,647,
+647,647,647,808,647,647,647,647,
+899,647,647,647,647,647,849,647,
+937,647,647,647,647,647,887,647
+</data>
+ </layer>
+</map>
