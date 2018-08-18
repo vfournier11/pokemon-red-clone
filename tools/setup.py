@@ -8,6 +8,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        tgm=tile_map_generator.generate_tile_map:cli
+        tmg=tile_map_generator.generate_tile_map:cli
     '''
 )

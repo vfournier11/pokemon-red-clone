@@ -2,9 +2,9 @@
 
 ## Map Generator
 
-usage: tgm [-h] tileset_location map_image exception_colors save_prefix
+usage: tmg [-h] tileset_location map_image exception_colors save_prefix
 
-e.g.: tgm "${PWD}/resources/tileset.png" "${PWD}/resources/Pallet Town.png" "(106, 148, 82)" "pallet_town"
+e.g.: tmg "${PWD}/resources/tileset.png" "${PWD}/resources/Pallet Town.png" "(106, 148, 82)" "pallet_town"
 
 Generate `tmx` files from a picture of a map.
 

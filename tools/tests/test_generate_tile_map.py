@@ -59,3 +59,14 @@ class TestGenerateTileMap(unittest.TestCase):
         asset_tileset = Tileset.from_file(DEFAULT_TILESET)
         map_images = MapsImage(os.path.join(RESOURCE_FOLDER, "route_1.png"), exception_colors=DEFAULT_EXCEPTION_COLOR)
         self.assertEqual(1, len(map_images.tilesets))
+
+    def test_map_tmx_properly_generated(self):
+        asset_tileset = Tileset.from_file(DEFAULT_TILESET)
+        map_images = MapsImage(TEST_MAP)
+
+        expected_file_content = open(os.path.join(RESOURCE_FOLDER, 'test_map.tmx'), 'r').read().split('\n')
+        # we split to be easier to diff
+        expected_file_content = expected_file_content.split('\n')
+
+        self.assertEqual(expected_file_content, MapFile(asset_tileset, map_images.tilesets[0]).file_repr().split('\n'))
+

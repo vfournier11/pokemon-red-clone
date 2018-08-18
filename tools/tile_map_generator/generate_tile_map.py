@@ -203,7 +203,7 @@ class MapFile:
         for j in range(tileset_map.height):
             line = []
             for i in range(tileset_map.width):
-                line.append(tileset_assets.find_tile(tileset_map.tiles[j * tileset_map.width + i]))
+                line.append(tileset_assets.find_tile(tileset_map.tiles[j * tileset_map.width + i]) + 1)
             self.rows.append(line)
 
         self.width = len(self.rows[0])
@@ -213,21 +213,18 @@ class MapFile:
         representation = '<?xml version="1.0" encoding="UTF-8"?>\n' \
                '<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down"' \
                f' width="{self.width}" height="{self.height}"' \
-               ' tilewidth="16" tileheight="16" infinite="0" nextobjectid="0">\n' \
-               '<tileset firstgid="0" source="tileset.tsx"/>\n' \
-               f'<layer name="world_tiles" width="{self.width}" height="{self.height}">' \
-               '<data encoding="csv">'
+               ' tilewidth="16" tileheight="16" infinite="0" nextobjectid="1">\n' \
+               ' <tileset firstgid="1" source="tileset.tsx"/>\n' \
+               f' <layer name="world_tiles" width="{self.width}" height="{self.height}">\n' \
+               '  <data encoding="csv">\n'
         for line in self.rows:
             representation += ','.join(str(x) for x in line) + ',\n'
         representation = representation[:-2] + '\n'  # Remove last comma
 
         representation += '</data>\n' \
-                          '</layer>\n' \
-                          '</map>'
+                          ' </layer>\n' \
+                          '</map>\n'
         return representation
-
-    def print(self):
-        print(self.file_repr())
 
     def save_to_file(self, filename):
         with open(filename, 'w') as f:

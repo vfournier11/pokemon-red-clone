@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="10" height="11" tilewidth="16" tileheight="16" infinite="0" nextobjectid="1">
- <tileset firstgid="1" source="../../android/assets/maps/tileset.tsx"/>
- <layer name="Tile Layer 1" width="10" height="11">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="world_tiles" width="10" height="11">
   <data encoding="csv">
 469,688,689,690,427,1493,428,767,1299,1300,
 7,45,8,8,8,1,77,78,78,79,
-7,39,39,39,1142,77,115,116,116,117,
-7,39,39,39,1142,115,153,154,154,155,
+7,39,39,39,83,77,115,116,116,117,
+7,39,39,39,83,115,153,154,154,155,
 7,120,118,39,39,153,191,192,154,191,
 7,41,41,238,239,1,45,41,41,7,
 7,41,41,276,277,5,45,41,41,11,
