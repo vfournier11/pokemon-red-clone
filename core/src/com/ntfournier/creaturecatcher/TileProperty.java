@@ -14,4 +14,8 @@ public class TileProperty {
         this.name = name;
         this.isWalkable = isWalkable;
     }
+
+    public String toString() {
+        return String.format("%s (W:%s)", this.name, this.isWalkable ? 'T' : 'F');
+    }
 }

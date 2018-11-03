@@ -111,12 +111,16 @@ public class CreatureCatcher extends Game {
                 break;
         }
 
-        TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) tiledMap.getLayers().get(0)).getCell(location.x,
-                                                                                                location.y);
+        TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) tiledMap.getLayers().get(0)).getCell(location.x, location.y);
+        TileProperty tileProperty;
         if (cell == null) {
             return new TileProperty("OUT_OF_MAP");
         }
-        return tileSetProperties.get(cell.getTile().getId());
+
+        int id = cell.getTile().getId();
+        tileProperty = tileSetProperties.get(id);
+        System.out.println(String.format("[location: %s] [tile: id:%d, %s]", location, id, tileProperty));
+        return tileProperty;
     }
 
     @Override
