@@ -1,5 +1,9 @@
 package com.ntfournier.creaturecatcher;
 
+import static com.ntfournier.creaturecatcher.Constants.DEFAULT_CAMERA_ZOOM;
+import static com.ntfournier.creaturecatcher.Constants.DEFAULT_ZOOM;
+import static com.ntfournier.creaturecatcher.Constants.TILE_SIZE;
+
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -7,7 +11,7 @@ import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class CreatureCatcher extends Game {
-    GameActor player = new GameActor(16 * 4, 16 * 4);
+    GameActor player = new GameActor(4, 4);
 
     SpriteBatch batch;
     Texture img;
@@ -19,11 +23,12 @@ public class CreatureCatcher extends Game {
 
     @Override
     public void create() {
-        float w = Gdx.graphics.getWidth();
-        float h = Gdx.graphics.getHeight();
+        float width = Gdx.graphics.getWidth();
+        float height = Gdx.graphics.getHeight();
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, w, h);
+        camera.zoom = DEFAULT_CAMERA_ZOOM;
+        camera.setToOrtho(false, width, height);
         camera.update();
 
         tiledMap = new TmxMapLoader().load("maps/small.tmx");
@@ -43,7 +48,8 @@ public class CreatureCatcher extends Game {
         tiledMapRenderer.render();
 
         batch.begin();
-        batch.draw(img, 16 * 4, 16 * 4);
+        // The player image is always in the center of the screen and the drawing emplacement never changes.
+        batch.draw(img, TILE_SIZE * 4 * DEFAULT_ZOOM, TILE_SIZE * 4 * DEFAULT_ZOOM, TILE_SIZE * DEFAULT_ZOOM, TILE_SIZE * DEFAULT_ZOOM);
         batch.end();
     }
 
@@ -51,36 +57,36 @@ public class CreatureCatcher extends Game {
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
             TileProperty nextTile = nextTile(GameActor.Direction.UP, player);
             if (nextTile.isWalkable) {
-                player.y += 16;
-                camera.position.y += 16;
+                player.y += 1;
+                camera.position.y += TILE_SIZE;
             }
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
             TileProperty nextTile = nextTile(GameActor.Direction.DOWN, player);
             if (nextTile.isWalkable) {
-                player.y -= 16;
-                camera.position.y -= 16;
+                player.y -= 1;
+                camera.position.y -= TILE_SIZE;
             }
             if (nextTile.isJumpable) {
-                player.y -= 32;
-                camera.position.y -= 32;
+                player.y -= 2;
+                camera.position.y -= TILE_SIZE * 2;
             }
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
             TileProperty nextTile = nextTile(GameActor.Direction.RIGHT, player);
             if (nextTile.isWalkable) {
-                player.x += 16;
-                camera.position.x += 16;
+                player.x += 1;
+                camera.position.x += TILE_SIZE;
             }
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
             TileProperty nextTile = nextTile(GameActor.Direction.LEFT, player);
             if (nextTile.isWalkable) {
-                player.x -= 16;
-                camera.position.x -= 16;
+                player.x -= 1;
+                camera.position.x -= TILE_SIZE;
             }
         }
 
@@ -88,7 +94,7 @@ public class CreatureCatcher extends Game {
 
 
     public TileProperty nextTile(GameActor.Direction direction, GameActor actor) {
-        TileMapPosition location = Utils.getTileMapLocation(actor);
+        TileMapPosition location = new TileMapPosition(actor.x, actor.y);
 
         switch (direction) {
             case UP:

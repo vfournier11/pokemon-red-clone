@@ -1,10 +1,10 @@
 package com.ntfournier.creaturecatcher;
 
 public class GameActor {
-    float x = 0;
-    float y = 0;
+    int x = 0;
+    int y = 0;
 
-    public GameActor(float x, int y) {
+    public GameActor(int x, int y) {
         this.x = x;
         this.y = y;
     }
