@@ -8,8 +8,8 @@ names = [
     "player_up_1",
     "player_left_0",
     "player_left_1",
-    "SKIP",
-    "SKIP",
+    "player_right_0",
+    "player_right_1",
 ]
 
 if __name__ == '__main__':

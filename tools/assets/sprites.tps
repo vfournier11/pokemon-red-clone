@@ -185,6 +185,8 @@
             <key type="filename">../split_spritesheet/sprites/player_down_1.png</key>
             <key type="filename">../split_spritesheet/sprites/player_left_0.png</key>
             <key type="filename">../split_spritesheet/sprites/player_left_1.png</key>
+            <key type="filename">../split_spritesheet/sprites/player_right_0.png</key>
+            <key type="filename">../split_spritesheet/sprites/player_right_1.png</key>
             <key type="filename">../split_spritesheet/sprites/player_up_0.png</key>
             <key type="filename">../split_spritesheet/sprites/player_up_1.png</key>
             <key type="filename">../split_spritesheet/sprites/sprite_10.png</key>
