@@ -6,7 +6,9 @@ import static com.ntfournier.creaturecatcher.Constants.TILE_SIZE;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
@@ -14,6 +16,9 @@ public class CreatureCatcher extends Game {
     GameActor player = new GameActor(4, 4);
 
     SpriteBatch batch;
+    TextureAtlas textureAtlas;
+    Animation<TextureAtlas.AtlasRegion> animation;
+    float time = 0;
     Texture img;
     TiledMap tiledMap;
     OrthographicCamera camera;
@@ -35,21 +40,28 @@ public class CreatureCatcher extends Game {
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 
         batch = new SpriteBatch();
+        textureAtlas = new TextureAtlas("sprites.txt");
+        animation = new Animation(.1f, textureAtlas.getRegions());
         img = new Texture("red.png");
     }
 
     @Override
     public void render() {
         this.handleInputs();
+
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
+
         tiledMapRenderer.setView(camera);
         tiledMapRenderer.render();
 
         batch.begin();
         // The player image is always in the center of the screen and the drawing emplacement never changes.
         batch.draw(img, TILE_SIZE * 4 * DEFAULT_ZOOM, TILE_SIZE * 4 * DEFAULT_ZOOM, TILE_SIZE * DEFAULT_ZOOM, TILE_SIZE * DEFAULT_ZOOM);
+
+        this.time += Gdx.graphics.getDeltaTime();
+        batch.draw(animation.getKeyFrame(this.time, true), 0, 0);
         batch.end();
     }
 

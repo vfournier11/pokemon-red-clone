@@ -4,7 +4,7 @@ import java.util.*;
 
 public class TileSetProperties {
     private static final String[] WALKABLE_TILE_RANGES = {
-            "0-3", "38-43", "237-241", "275-281",
+            "1-4", "38-43", "237-241", "275-281",
             "313-318", "352-356"
     };
 
@@ -33,15 +33,19 @@ public class TileSetProperties {
             }
         }
 
-        map.put(0, new TileProperty("empty", true));
-        map.put(4, new TileProperty("panel"));
-        map.put(5, new TileProperty("panel_two_pillar"));
-        map.put(6, new TileProperty("barrier_pod"));
-        map.put(7, new TileProperty("barrier_pillar"));
-        map.put(8, new TileProperty("water_top_right_corner"));
-        map.put(10, new TileProperty("water_top_left_corner"));
-        map.put(12, new TileProperty("water_heavy_top_right_corner"));
-        map.put(14, new TileProperty("water_heavy_top_left_corner"));
+        map.put(1, new TileProperty("empty", true));
+        map.put(2, new TileProperty("empty_grass", true));
+        map.put(5, new TileProperty("panel"));
+        map.put(6, new TileProperty("panel_two_pillar"));
+        map.put(7, new TileProperty("barrier_pod"));
+        map.put(8, new TileProperty("barrier_pillar"));
+        map.put(9, new TileProperty("water_top_right_corner"));
+        map.put(11, new TileProperty("water_top_left_corner"));
+        map.put(13, new TileProperty("water_heavy_top_right_corner"));
+        map.put(15, new TileProperty("water_heavy_top_left_corner"));
+        map.put(45, new TileProperty("bush_1"));
+        map.put(83, new TileProperty("bush_1"));
+        map.put(46, new TileProperty("cut_tree"));
         return Collections.unmodifiableMap(map);
     }
 
