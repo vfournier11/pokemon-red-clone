@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="16" tileheight="16" infinite="0" nextobjectid="1">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
  <tileset firstgid="1" source="tileset.tsx"/>
- <layer name="world_tiles" width="8" height="8">
+ <layer id="1" name="world_tiles" width="8" height="8">
   <data encoding="csv">
-928,928,609,658,609,658,609,658,
-966,966,647,770,647,647,647,843,
+929,929,609,1002,609,659,609,975,
+967,967,647,647,647,647,647,1013,
 647,647,647,647,647,647,647,647,
+647,647,657,796,798,657,647,647,
+647,647,657,834,836,657,647,647,
 647,647,647,647,647,647,647,647,
-647,647,657,926,927,657,647,647,
-647,647,657,964,965,657,647,647,
-647,647,647,647,647,647,647,647,
-647,647,691,691,647,647,647,647
+849,647,647,647,647,647,647,849,
+887,647,685,685,647,647,647,887
+</data>
+ </layer>
+ <layer id="2" name="locations" width="8" height="8">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,139,139,0,0,0,0
 </data>
  </layer>
 </map>

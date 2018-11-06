@@ -5,7 +5,7 @@ import java.util.*;
 public class TileSetProperties {
     private static final String[] WALKABLE_TILE_RANGES = {
             "1-4", "38-43", "237-241", "275-281",
-            "313-318", "352-356"
+            "313-318", "352-356", "647", "805"
     };
 
     private static final String[] JUMPABLE_TITLE_RANGES = {
@@ -19,8 +19,12 @@ public class TileSetProperties {
 
         for (String tileRange: TileSetProperties.WALKABLE_TILE_RANGES) {
             String[] range = tileRange.split("-");
-            for (int i = Integer.parseInt(range[0]); i <= Integer.parseInt(range[1]); ++i) {
-                map.put(i, new TileProperty("generic_walkable", true));
+            if (range.length == 1) {
+                map.put(Integer.valueOf(range[0]), new TileProperty("generic_walkable", true));
+            } else {
+                for(int i = Integer.parseInt(range[0]); i <= Integer.parseInt(range[1]); ++i) {
+                    map.put(i, new TileProperty("generic_walkable", true));
+                }
             }
         }
 
