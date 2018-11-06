@@ -66,48 +66,34 @@ public class CreatureCatcher extends Game {
     }
 
     public void handleInputs() {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            this.player.direction = Direction.UP;
-            TileProperty nextTile = nextTile(Direction.UP, player);
-            if (nextTile.isWalkable) {
-                player.y += 1;
-                this.player.walk(Direction.UP);
-                this.camera.move(Direction.UP, 1);
-            }
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-            this.player.direction = Direction.DOWN;
-            TileProperty nextTile = nextTile(Direction.DOWN, player);
-            if (nextTile.isWalkable) {
-                player.y -= 1;
+        if (!this.player.isMoving) {
+            if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
                 this.player.walk(Direction.DOWN);
-                this.camera.move(Direction.DOWN, 1);
-            }
-            if (nextTile.isJumpable) {
-                player.y -= 2;
-                this.player.walk(Direction.DOWN);
-                this.camera.move(Direction.DOWN, 2);
-            }
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-            this.player.direction = Direction.RIGHT;
-            TileProperty nextTile = nextTile(Direction.RIGHT, player);
-            if (nextTile.isWalkable) {
-                player.x += 1;
+                TileProperty nextTile = nextTile(Direction.DOWN, player);
+                if(nextTile.isWalkable && this.camera.move(Direction.DOWN)) {
+                    player.y -= 1;
+                }
+                if(nextTile.isJumpable && this.camera.move(Direction.JUMP_DOWN)) {
+                    player.y -= 2;
+                }
+            } else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                 this.player.walk(Direction.RIGHT);
-                this.camera.move(Direction.RIGHT, 2);
-            }
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
-            this.player.direction = Direction.LEFT;
-            TileProperty nextTile = nextTile(Direction.LEFT, player);
-            if (nextTile.isWalkable) {
-                player.x -= 1;
+                TileProperty nextTile = nextTile(Direction.RIGHT, player);
+                if(nextTile.isWalkable && this.camera.move(Direction.RIGHT)) {
+                    player.x += 1;
+                }
+            } else if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
+                this.player.walk(Direction.UP);
+                TileProperty nextTile = nextTile(Direction.UP, player);
+                if(nextTile.isWalkable && this.camera.move(Direction.UP)) {
+                    player.y += 1;
+                }
+            } else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
                 this.player.walk(Direction.LEFT);
-                this.camera.move(Direction.LEFT, 1);
+                TileProperty nextTile = nextTile(Direction.LEFT, player);
+                if(nextTile.isWalkable && this.camera.move(Direction.LEFT)) {
+                    player.x -= 1;
+                }
             }
         }
     }
